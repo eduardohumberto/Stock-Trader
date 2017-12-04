@@ -10,13 +10,20 @@
 </template>
 
 <script>
-    import Header from './components/Header.vue';
+    import Header from './components/Header.vue'
+    import { mapActions } from 'vuex';
+
     export default {
         components: {
             appHeader: Header
         },
         created(){
-            this.$store.dispatch('initStocks');
+            this.initStocks;
+        },
+        computed: {
+            ...mapActions('stocks',[
+                'initStocks'
+            ])
         }
     }
 </script>

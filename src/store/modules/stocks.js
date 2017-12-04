@@ -14,8 +14,8 @@ const mutations = {
 };
 
 const actions = {
-    buyStock: ( { commit }, order ) => {
-         commit();
+    buyStock: ( {commit},order ) => {
+         commit('portfolio/buyStock', order, { root: true });
     },
     initStocks: ( { commit }) => {
         commit('setStocks', stocks);
@@ -27,11 +27,12 @@ const actions = {
 
 const getters = {
     stocks: state => {
-         return state.stocks
+         return state.stocks;
     }
 }
 
 export default {
+    namespaced: true,
     state,
     mutations,
     actions,
